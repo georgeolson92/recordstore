@@ -27,9 +27,9 @@ System.register(['angular2/core', './album.model', './album-list.component'], fu
             AppComponent = (function () {
                 function AppComponent() {
                     this.albums = [
-                        new album_model_1.Album("Album", "Artist", "Genre"),
-                        new album_model_1.Album("Album1", "Artist1", "Genre1"),
-                        new album_model_1.Album("Album2", "Artist2", "Genre2")
+                        new album_model_1.Album("Contra", "Vampire Weekend", "Alternative", 19.99),
+                        new album_model_1.Album("Emotion", "Carly Rae Jepsen", "Pop", 18.99),
+                        new album_model_1.Album("Good Kid, M.A.A.D City", "Kendrick Lamar", "Rap", 19.99)
                     ];
                 }
                 AppComponent.prototype.albumWasSelected = function (clickedAlbum) {

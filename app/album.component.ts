@@ -6,12 +6,21 @@ import { Album } from './album.model';
   inputs: ['album'],
   template: `
     <div class="album">
-      <h3>{{ album.title }} | {{ album.artist }}</h3>
-      <p>{{ album.genre }}</p>
+      <h4>{{ album.title }} | {{ album.artist }}</h4>
+      <p class="genre">Genre: {{ album.genre }}</p>
+      <p class="price">Price: \${{ album.price }}</p>
+      <button (click)="buyAlbum()" class="btn btn-primary" [class.hidden]="album.cart === true">Add to cart</button>
+      <button (click)="unBuyAlbum()" class="btn btn-danger" [class.hidden]="album.cart === false">Remove from cart</button>
     </div>
   `
 })
 
 export class AlbumComponent {
   public album: Album;
+  buyAlbum() {
+    this.album.addToCart();
+  }
+  unBuyAlbum() {
+    this.album.removeFromCart();
+  }
 }

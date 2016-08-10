@@ -6,11 +6,19 @@ System.register([], function(exports_1, context_1) {
         setters:[],
         execute: function() {
             Album = (function () {
-                function Album(title, artist, genre) {
+                function Album(title, artist, genre, price) {
                     this.title = title;
                     this.artist = artist;
                     this.genre = genre;
+                    this.price = price;
+                    this.cart = false;
                 }
+                Album.prototype.addToCart = function () {
+                    this.cart = true;
+                };
+                Album.prototype.removeFromCart = function () {
+                    this.cart = false;
+                };
                 return Album;
             }());
             exports_1("Album", Album);

@@ -11,34 +11,31 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var AlbumComponent;
+    var ShoppingCartPipe;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            AlbumComponent = (function () {
-                function AlbumComponent() {
+            ShoppingCartPipe = (function () {
+                function ShoppingCartPipe() {
                 }
-                AlbumComponent.prototype.buyAlbum = function () {
-                    this.album.addToCart();
+                ShoppingCartPipe.prototype.transform = function (input, args) {
+                    var desiredState = args[0];
+                    return input.filter(function (album) { return (album.cart === desiredState); });
                 };
-                AlbumComponent.prototype.unBuyAlbum = function () {
-                    this.album.removeFromCart();
-                };
-                AlbumComponent = __decorate([
-                    core_1.Component({
-                        selector: 'album-display',
-                        inputs: ['album'],
-                        template: "\n    <div class=\"album\">\n      <h4>{{ album.title }} | {{ album.artist }}</h4>\n      <p class=\"genre\">Genre: {{ album.genre }}</p>\n      <p class=\"price\">Price: ${{ album.price }}</p>\n      <button (click)=\"buyAlbum()\" class=\"btn btn-primary\" [class.hidden]=\"album.cart === true\">Add to cart</button>\n      <button (click)=\"unBuyAlbum()\" class=\"btn btn-danger\" [class.hidden]=\"album.cart === false\">Remove from cart</button>\n    </div>\n  "
+                ShoppingCartPipe = __decorate([
+                    core_1.Pipe({
+                        name: "cart",
+                        pure: false
                     }), 
                     __metadata('design:paramtypes', [])
-                ], AlbumComponent);
-                return AlbumComponent;
+                ], ShoppingCartPipe);
+                return ShoppingCartPipe;
             }());
-            exports_1("AlbumComponent", AlbumComponent);
+            exports_1("ShoppingCartPipe", ShoppingCartPipe);
         }
     }
 });
-//# sourceMappingURL=album.component.js.map
+//# sourceMappingURL=cart.pipe.js.map

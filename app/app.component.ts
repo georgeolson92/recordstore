@@ -15,9 +15,9 @@ export class AppComponent {
   public albums: Album[];
   constructor(){
     this.albums = [
-      new Album("Album", "Artist", "Genre"),
-      new Album("Album1", "Artist1", "Genre1"),
-      new Album("Album2", "Artist2", "Genre2")
+      new Album("Contra", "Vampire Weekend", "Alternative", 19.99),
+      new Album("Emotion", "Carly Rae Jepsen", "Pop", 18.99),
+      new Album("Good Kid, M.A.A.D City", "Kendrick Lamar", "Rap", 19.99)
     ];
   }
   albumWasSelected(clickedAlbum: Album): void {
