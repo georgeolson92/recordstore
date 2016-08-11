@@ -1,4 +1,4 @@
-System.register(['angular2/core', './album.component', './new-album.component', './cart.pipe'], function(exports_1, context_1) {
+System.register(['angular2/core', './album.component', './new-album.component', './cart.pipe', './artist.pipe'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './album.component', './new-album.component', 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, album_component_1, new_album_component_1, cart_pipe_1;
+    var core_1, album_component_1, new_album_component_1, cart_pipe_1, artist_pipe_1;
     var AlbumListComponent;
     return {
         setters:[
@@ -25,14 +25,27 @@ System.register(['angular2/core', './album.component', './new-album.component', 
             },
             function (cart_pipe_1_1) {
                 cart_pipe_1 = cart_pipe_1_1;
+            },
+            function (artist_pipe_1_1) {
+                artist_pipe_1 = artist_pipe_1_1;
             }],
         execute: function() {
             AlbumListComponent = (function () {
                 function AlbumListComponent() {
                     this.filterNotInCart = false;
                     this.filterInCart = true;
+                    this.showAll = true;
+                    this.showArtist = false;
                     this.onAlbumSelect = new core_1.EventEmitter();
                 }
+                AlbumListComponent.prototype.displayByArtist = function () {
+                    this.showArtist = true;
+                    this.showAll = false;
+                };
+                AlbumListComponent.prototype.displayAll = function () {
+                    this.showArtist = false;
+                    this.showAll = true;
+                };
                 AlbumListComponent.prototype.albumClicked = function (clickedAlbum) {
                     console.log('child', clickedAlbum);
                     this.selectedAlbum = clickedAlbum;
@@ -47,8 +60,8 @@ System.register(['angular2/core', './album.component', './new-album.component', 
                         inputs: ['albumList'],
                         outputs: ['onAlbumSelect'],
                         directives: [album_component_1.AlbumComponent, new_album_component_1.NewAlbumComponent],
-                        pipes: [cart_pipe_1.ShoppingCartPipe],
-                        template: "\n  <div class=\"shopping-cart\">\n    <h3>Shopping Cart</h3>\n      <album-display *ngFor=\"#currentAlbum of albumList | cart:filterInCart\" [album]=\"currentAlbum\">\n      </album-display>\n      <p>Total price: </p>\n  </div>\n  <h1>Albums:</h1>\n    <album-display *ngFor=\"#currentAlbum of albumList | cart:filterNotInCart\" [album]=\"currentAlbum\">\n    </album-display>\n    <new-album  (onSubmitNewAlbum)=\"addAlbum($event)\"></new-album>"
+                        pipes: [cart_pipe_1.ShoppingCartPipe, artist_pipe_1.ArtistPipe],
+                        template: "\n  <div class=\"info-box\">\n    <h3>Shopping Cart</h3>\n      <album-display *ngFor=\"#currentAlbum of albumList | cart:filterInCart\" [album]=\"currentAlbum\">\n      </album-display>\n      <p>Total price: </p>\n  </div>\n  <h1>Albums:</h1>\n    <input [(ngModel)]=\"artistValue\"/>\n    <button (click)=\"displayByArtist()\" class=\"btn btn-primary\">Display albums by artist</button>\n    <button (click)=\"displayAll()\" class=\"btn btn-success\">Display all albums</button>\n    <div class=\"all-artists\" *ngIf=\"showAll\">\n      <album-display *ngFor=\"#currentAlbum of albumList | cart:filterNotInCart\" [album]=\"currentAlbum\">\n      </album-display>\n    </div>\n    <div class=\"by-artist\" *ngIf=\"showArtist\">\n      <album-display *ngFor=\"#currentAlbum of albumList | byartist:artistValue\" [album]=\"currentAlbum\">\n      </album-display>\n    </div>\n    <hr>\n    <new-album  (onSubmitNewAlbum)=\"addAlbum($event)\"></new-album>"
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AlbumListComponent);
