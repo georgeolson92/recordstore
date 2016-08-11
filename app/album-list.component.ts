@@ -17,12 +17,12 @@ import { GenrePipe } from './genre.pipe';
     <h3>Shopping Cart</h3>
       <album-display *ngFor="#currentAlbum of albumList | cart:filterInCart" [album]="currentAlbum">
       </album-display>
-      <p>Total price: </p>
+      <p>Total price: $<span id="price">0</span></p>
   </div>
   <h1>Albums:</h1>
     Artist: <input [(ngModel)]="artistValue"/>
-    Genre: <input [(ngModel)]="genreValue"/>
     <button (click)="displayByArtist()" class="btn btn-primary">Display albums by artist</button>
+    Genre: <input [(ngModel)]="genreValue"/>
     <button (click)="displayByGenre()" class="btn btn-info">Display albums by genre</button>
     <button (click)="displayAll()" class="btn btn-success">Display all albums</button>
     <div class="all-artists" *ngIf="showAll">

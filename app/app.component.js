@@ -31,7 +31,9 @@ System.register(['angular2/core', './album.model', './album-list.component'], fu
                         new album_model_1.Album("Dangerous Woman", "Ariana Grande", "Pop", 18.99),
                         new album_model_1.Album("Good Kid, M.A.A.D City", "Kendrick Lamar", "Rap", 19.99),
                         new album_model_1.Album("Panda Bear Meets The Grim Reaper", "Panda Bear", "Electronic", 19.99),
-                        new album_model_1.Album("Lemonade", "Beyonce", "R&B", 35.99)
+                        new album_model_1.Album("Lemonade", "Beyonce", "R&B", 35.99),
+                        new album_model_1.Album("Emotion", "Carly Rae Jepsen", "Pop", 19.99),
+                        new album_model_1.Album("Currents", "Tame Impala", "Alternative", 27.99)
                     ];
                 }
                 AppComponent.prototype.albumWasSelected = function (clickedAlbum) {
