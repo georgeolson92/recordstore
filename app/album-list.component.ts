@@ -13,31 +13,40 @@ import { GenrePipe } from './genre.pipe';
   directives: [AlbumComponent, NewAlbumComponent],
   pipes: [ShoppingCartPipe, ArtistPipe, GenrePipe],
   template: `
-  <div class="info-box">
-    <h3>Shopping Cart</h3>
-      <album-display *ngFor="#currentAlbum of albumList | cart:filterInCart" [album]="currentAlbum">
-      </album-display>
-      <p>Total price: $<span id="price">0</span></p>
-  </div>
   <h1>Albums:</h1>
     Artist: <input [(ngModel)]="artistValue"/>
     <button (click)="displayByArtist()" class="btn btn-primary">Display albums by artist</button>
     Genre: <input [(ngModel)]="genreValue"/>
     <button (click)="displayByGenre()" class="btn btn-info">Display albums by genre</button>
     <button (click)="displayAll()" class="btn btn-success">Display all albums</button>
-    <div class="all-artists" *ngIf="showAll">
+    <div class="all-artists row" *ngIf="showAll">
       <album-display *ngFor="#currentAlbum of albumList | cart:filterNotInCart" [album]="currentAlbum">
       </album-display>
     </div>
-    <div class="by-artist" *ngIf="showArtist">
-      <h2>Albums by artist</h2>
+    <div class="by-artist row" *ngIf="showArtist">
+      <div class="col-xs-12">
+        <h2>Albums by artist</h2>
+      </div>
       <album-display *ngFor="#currentAlbum of albumList | byartist:artistValue" [album]="currentAlbum">
       </album-display>
     </div>
-    <div class="by-genre" *ngIf="showGenre">
-      <h2>Albums by genre</h2>
+    <div class="by-genre row" *ngIf="showGenre">
+      <div class="col-xs-12">
+        <h2>Albums by genre</h2>
+      </div>
       <album-display *ngFor="#currentAlbum of albumList | bygenre:genreValue" [album]="currentAlbum">
       </album-display>
+    </div>
+    <hr>
+    <div class="info-box">
+      <h3>Shopping Cart</h3>
+      <div class="row">
+        <album-display *ngFor="#currentAlbum of albumList | cart:filterInCart" [album]="currentAlbum">
+        </album-display>
+        <div class="col-xs-12">
+          <p>Total price: $<span id="price">0</span></p>
+        </div>
+      </div>
     </div>
     <hr>
     <new-album  (onSubmitNewAlbum)="addAlbum($event)"></new-album>`

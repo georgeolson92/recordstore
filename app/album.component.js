@@ -31,7 +31,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     core_1.Component({
                         selector: 'album-display',
                         inputs: ['album'],
-                        template: "\n    <div class=\"album\">\n      <h4>{{ album.title }} | {{ album.artist }}</h4>\n      <p class=\"genre\">Genre: {{ album.genre }}</p>\n      <p class=\"price\">Price: ${{ album.price }}</p>\n      <button (click)=\"buyAlbum()\" class=\"btn btn-primary\" [class.hidden]=\"album.cart === true\">Add to cart</button>\n      <button (click)=\"unBuyAlbum()\" class=\"btn btn-danger\" [class.hidden]=\"album.cart === false\">Remove from cart</button>\n    </div>\n  "
+                        template: "\n    <div class=\"col-md-4\">\n      <div class=\"album\">\n        <h3>{{ album.title }}</h3>\n        <h4>{{ album.artist }}</h4>\n        <p class=\"genre\">Genre: {{ album.genre }}</p>\n        <p class=\"price\">Price: ${{ album.price }}</p>\n        <button (click)=\"buyAlbum()\" class=\"btn btn-primary\" [class.hidden]=\"album.cart === true\">Add to cart</button>\n        <button (click)=\"unBuyAlbum()\" class=\"btn btn-danger\" [class.hidden]=\"album.cart === false\">Remove from cart</button>\n      </div>\n    </div>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AlbumComponent);
